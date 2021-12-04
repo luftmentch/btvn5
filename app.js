@@ -1,6 +1,7 @@
 let table = document.getElementById("table");
 table.innerHTML = `
-<thead></thead>
+<thead>
+</thead>
 <tr>
   <th><input type="checkbox"></th>
   <th>Name</th>
@@ -33,9 +34,12 @@ if (localStorage.getItem("in4")) {
 
   table.innerHTML += `
 ${renderPhoneList}`;
-} else {
+} 
+
+else {
   in4 = [];
 }
+
 
 let addForm = false;
 
@@ -54,6 +58,7 @@ function showForm() {
   </form>`;
   }
 }
+
 
 function addContact(event) {
   event.preventDefault();
@@ -112,6 +117,7 @@ function resetInput() {
   document.forms["form"]["sdt"].value = "";
 }
 
+
 function editName(key) {
   console.log(key);
   if (localStorage.getItem("in4")) {
@@ -127,6 +133,7 @@ function editName(key) {
   document.getElementById("email").value = in4[key].email;
   document.getElementById("sdt").value = in4[key].sdt;
 }
+
 
 function changeName(event) {
   event.preventDefault();
@@ -158,7 +165,8 @@ function changeName(event) {
     .join("\n");
 
   table.innerHTML = `
-<thead></thead>
+<thead>
+</thead>
 <tr>
   <th><input type="checkbox"></th>
   <th>Name</th>
@@ -175,6 +183,7 @@ ${renderPhoneList}`;
   localStorage.setItem("in4", JSON.stringify(in4));
 }
 
+
 function deleteName(key) {
   if (localStorage.getItem("in4")) {
     in4 = JSON.parse(localStorage.getItem("in4"));
@@ -182,7 +191,7 @@ function deleteName(key) {
     in4 = [];
   }
   let i;
-  if (confirm("are u sure?")) {
+  if (confirm("ban co chac muon xoa khong?")) {
     in4.splice(key, 1);
     localStorage.setItem("in4", JSON.stringify(in4));
   }
@@ -203,7 +212,8 @@ function deleteName(key) {
     .join("\n");
 
   table.innerHTML = `
-<thead></thead>
+<thead>
+</thead>
 <tr>
 <th><input type="checkbox"></th>
 <th>Name</th>
@@ -225,7 +235,8 @@ function deleteAll() {
   localStorage.clear();
   console.log(in4);
   table.innerHTML = `
-<thead></thead>
+<thead>
+</thead>
 <tr>
   <th><input type="checkbox"></th>
   <th>Name</th>
@@ -236,4 +247,3 @@ function deleteAll() {
 </tr>
 </thead>`;
 }
-
